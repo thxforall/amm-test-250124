@@ -1,13 +1,31 @@
-# Sample Hardhat Project
+## 문제 1 - Uniswap V2 형태의 AMM을 개발하고 주어진 시나리오를 실행해보면 됩니다.
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+    1.	초기 조건:
+    •	초기 비율: A:B = 3:1
+    •	초기 k값: 30,000,000,000
+    •	유동성 제공 시 A 토큰의 10배만큼 LP 토큰 발행.
+    2.	시나리오 결과:
+    •	유저 1: A 30,000개 제공 → B 10,000개 필요, LP 30,000개 수령.
+    •	유저 2: B 60,000개 제공 → A 180,000개 필요, LP 18,000개 수령.
+    •	유저 3: A 25,000개 매도 → B 약 892개 수령, k값 변동 없음.
+    •	유저 4: B 50,000개 매도 → A 약 2,938개 수령, k값 변동 없음.
+    •	유저 1 유동성 회수: A 30,000개, B 10,000개 수령.
+    •	유저 2 유동성 회수: A 180,000개, B 60,000개 수령.
 
-Try running some of the following tasks:
+---
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.js
-```
+## 문제 2 - Uniswap V2 형태의 AMM을 개발하고 주어진 시나리오를 실행해보면 됩니다.
+
+    1.	초기 조건:
+    •	초기 비율: A:B = 5:1
+    •	초기 k값: 1,250,000,000,000
+    •	유동성 제공 시 A 토큰의 5배만큼 LP 토큰 발행.
+    •	가격이 2.5:1 이하가 되면 경고문구 발생.
+    2.	시나리오 결과:
+    •	유저 1: A 50,000개 제공 → B 10,000개 필요, LP 50,000개 수령.
+    •	유저 2: B 100,000개 제공 → A 500,000개 필요, LP 100,000개 수령.
+    •	유저 3 (A 2,500개 매도):
+    •	첫 번째 매도: B 약 497개 수령.
+    •	두 번째 매도: B 약 492개 수령.
+    •	세 번째 매도: B 약 487개 수령.
+    •	경고문구: A와 B 비율이 2.5:1 이하가 되면 발생 (매도 반복 시 테스트 필요).
